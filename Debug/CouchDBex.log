@@ -1,0 +1,5 @@
+﻿  Source.cpp
+c:\users\антон\documents\visual studio 2015\projects\couchdbex\packages\curl.7.30.0.2\build\native\lib\v110\x64\release\dynamic\libcurl.lib(1): error C2059: синтаксическая ошибка: <
+c:\users\антон\documents\visual studio 2015\projects\couchdbex\packages\curl.7.30.0.2\build\native\lib\v110\x64\release\dynamic\libcurl.lib(2): error C2018: неизвестный знак "0x60"
+c:\users\антон\documents\visual studio 2015\projects\couchdbex\packages\curl.7.30.0.2\build\native\lib\v110\x64\release\dynamic\libcurl.lib(3): error C2018: неизвестный знак "0x17"
+c:\users\антон\documents\visual studio 2015\projects\couchdbex\packages\curl.7.30.0.2\build\native\lib\v110\x64\release\dynamic\libcurl.lib(3): error C2018: неизвестный знак "0x19"
