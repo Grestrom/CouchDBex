@@ -7,9 +7,26 @@
 char str1[1000000];
 char str2[1000000];
 char str3[1000000];
-
-void Processing()
+char k[] = "k";
+char dd[] = ":";
+void ProcessingWR()
 {
+	//сделать в правильном формате ввод из строки 1 и засунуть в строку 2
+	//придумать как делать ид
+	return;
+}
+
+void ProcessingR()
+{
+	for (int j = 0; j < str3[strcspn(str3, dd)+1]-'0';j++)
+	{
+		int i = strcspn(str3, k); // как-то нужно удалить начало стр3 чтобы в цикле не получилось одно и то же значение
+		while (str3[i] != '\"')
+		{
+
+			i++;
+		}
+	}
 	return;
 }
 
@@ -26,6 +43,7 @@ void Write()
 
 		curl_easy_setopt(curl, CURLOPT_PROXYUSERPWD, "admin:12345");
 		
+		ProcessingWR();
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &str2);
 
 		curl_easy_cleanup(curl);
@@ -42,7 +60,7 @@ void Word()
 
 	if (curl)
 	{
-		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/all_docs");
+		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/_design/view2/_view/view2");
 
 		curl_easy_setopt(curl, CURLOPT_PROXYUSERPWD, "admin:12345");
 
@@ -52,7 +70,7 @@ void Word()
 
 	}
 
-	Processing();
+	ProcessingR();
 
 	return;
 }
@@ -64,7 +82,7 @@ void Reverse()
 
 	if (curl)
 	{
-		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/all_docs");
+		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/_design/view1/_view/view1");
 
 		curl_easy_setopt(curl, CURLOPT_PROXYUSERPWD, "admin:12345");
 
@@ -73,12 +91,12 @@ void Reverse()
 		curl_easy_cleanup(curl);
 	}
 
-	Processing();
+	ProcessingR();
 
 	return;
 }
 
-BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
+BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) //чтение из окна сделать
 {
 	switch (uMsg)
 	{
