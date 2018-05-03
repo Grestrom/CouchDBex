@@ -3,42 +3,41 @@
 #include <windows.h>
 #include "resource.h"
 
-/*int main()
+
+char str1[1000];
+char str2[1000];
+void Write()
 {
-	
 	CURL *curl;
 	CURLcode res;
 	curl = curl_easy_init();
-	
 
-	if (curl) 
-	{ 
 
-				
-		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/all_docs" );
-
-		curl_easy_setopt(curl, CURLOPT_HEADER, 1);
+	if (curl)
+	{
+		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/all_docs");
 
 		curl_easy_setopt(curl, CURLOPT_PROXYUSERPWD, "admin:12345");
-		for (int)
-			curl_easy_setopt(curl, CURLOPT_WRITEDATA, &buffer);
+		
+		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &str2);
 
-		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/all_docs");
 		curl_easy_cleanup(curl);
 	}
+	return;
+}
+void Word()
+{
 
-	return 0;
-}*/
+	return;
+}
+void Reverse()
+{
+
+	return;
+}
+
 BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	char str1[1000] = "abc\nabcdefb\nfbjsbjsbhlsdbjhdsbjdb";
-	char str2[1000];
-
-	for (int i = 0; i < strlen(str1); i++)
-	{
-		str2[i] = str1[strlen(str1) - i - 1];
-	}
-	str2[strlen(str1)] = str1[strlen(str1)];
 	switch (uMsg)
 	{
 	case WM_INITDIALOG:
@@ -51,10 +50,12 @@ BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			MessageBox(hwnd, "Принято", "OK", MB_OK);
 			break;
 		case IDWORD:
+			Word();
 			MessageBox(hwnd, str1, "Word", MB_OK);
 			break;
 		case IDREV:
-			MessageBox(hwnd, str2, "Reverse", MB_OK);
+			Reverse();
+			MessageBox(hwnd, str1, "Reverse", MB_OK);
 			break;
 		case IDEXIT:
 			EndDialog(hwnd, 0);
