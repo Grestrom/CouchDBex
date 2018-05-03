@@ -1,11 +1,18 @@
-#include <C:\Users\Антон\Documents\Visual Studio 2015\Projects\CouchDBex\packages\curl.7.30.0.2\build\native\include\curl\curl.h>
-#include <C:\Users\Антон\Documents\Visual Studio 2015\Projects\CouchDBex\packages\curl.7.30.0.2\build\native\lib\v110\x64\Release\dynamic\libcurl.lib>
+#include <curl.7.30.0.2\build\native\include\curl\curl.h>
+#include <curl.7.30.0.2\build\native\lib\v110\x64\Release\dynamic\libcurl.lib>
 #include <windows.h>
 #include "resource.h"
 
 
-char str1[1000];
-char str2[1000];
+char str1[1000000];
+char str2[1000000];
+char str3[1000000];
+
+void Processing()
+{
+	return;
+}
+
 void Write()
 {
 	CURL *curl;
@@ -25,13 +32,48 @@ void Write()
 	}
 	return;
 }
+
 void Word()
 {
+	CURL *curl;
+	CURLcode res;
+	curl = curl_easy_init();
+
+
+	if (curl)
+	{
+		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/all_docs");
+
+		curl_easy_setopt(curl, CURLOPT_PROXYUSERPWD, "admin:12345");
+
+		curl_easy_setopt(curl, CURLOPT_READDATA, &str3);
+
+		curl_easy_cleanup(curl);
+
+	}
+
+	Processing();
 
 	return;
 }
 void Reverse()
 {
+	CURL *curl;
+	CURLcode res;
+	curl = curl_easy_init();
+
+	if (curl)
+	{
+		curl_easy_setopt(curl, CURLOPT_URL, "http://127.0.0.0.1:5984/words/all_docs");
+
+		curl_easy_setopt(curl, CURLOPT_PROXYUSERPWD, "admin:12345");
+
+		curl_easy_setopt(curl, CURLOPT_READDATA, &str3);
+
+		curl_easy_cleanup(curl);
+	}
+
+	Processing();
 
 	return;
 }
@@ -47,7 +89,7 @@ BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 		switch (LOWORD(wParam))
 		{
 		case IDOK:
-			MessageBox(hwnd, "Принято", "OK", MB_OK);
+			MessageBox(hwnd, "Accepted", "OK", MB_OK);
 			break;
 		case IDWORD:
 			Word();
