@@ -96,18 +96,25 @@ void Reverse()
 	return;
 }
 
-BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) //чтение из окна сделать
+HWND hs1;
+char text[] = {"Type the word..."};
+BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) //готово
 {
 	switch (uMsg)
 	{
 	case WM_INITDIALOG:
+		hs1 = GetDlgItem(hwnd, IDS1);
+		SendMessage(hs1, WM_SETTEXT, 0, (LPARAM)text);
 		break;
 
 	case WM_COMMAND:
 		switch (LOWORD(wParam))
 		{
 		case IDOK:
-			MessageBox(hwnd, "Accepted", "OK", MB_OK);
+			SendMessage(hs1, WM_GETTEXT, (WPARAM)255, (LPARAM)str1);
+			SendMessage(hs1, WM_SETTEXT, 0, (LPARAM)text);
+			Write();
+			MessageBox(hwnd, str1, "OK", MB_OK);
 			break;
 		case IDWORD:
 			Word();
