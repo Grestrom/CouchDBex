@@ -1,24 +1,59 @@
 #include <curl.7.30.0.2\build\native\include\curl\curl.h>
 #include <windows.h>
 #include "resource.h"
+#include <time.h> 
 
 
 char str1[1000000];
 char str2[1000000];
 char str3[1000000];
+char obor[1000000];
+char id[11];
 char k[] = "k";
 char dd[] = ":";
+char WR1[] = "{\"id\"\:\"";
+char WR2[] = "\"word\"\:\"";
+char WR3[] = "\",\"change\"\:\"";
+char WR4[] = "\"}";
+void idmaker()
+{
+	srand((unsigned int)time(NULL));
+	for (int i = 0; i < 10; i++)
+	{
+
+		id[i] = rand()%10-'0';
+	}
+	return;
+}
+void Oborot()
+{
+	for (int i = 0; i < strlen(str1); i++)
+	{
+		obor[i] = str1[strlen(str1) - i - 1];
+	}
+	obor[strlen(str1)] = str1[strlen(str1)];
+}
+
 void ProcessingWR()
 {
-	//сделать в правильном формате ввод из строки 1 и засунуть в строку 2
-	//придумать как делать ид
+	idmaker();
+	Oborot();
+	str2[0] = k[1];
+	strcat(str2, WR1);
+	strcat(str2, id);
+	strcat(str2, WR2);
+	strcat(str2, str1);
+	strcat(str2, WR3);
+	strcat(str2, obor);
+	strcat(str2, WR4);
+	//str2 = WR1+id+WR2+s1+WR3+obor+WR4
 	return;
 }
 
 void ProcessingR()
 {
 	int c = 0;
-	int i = strcspn(str3, k)+6;
+	int i = strcspn(str3, k)+6; 
 	for (int j = 0; j < str3[strcspn(str3, dd)+1]-'0';j++)
 	{
 		int dl = 0;
@@ -31,7 +66,7 @@ void ProcessingR()
 		}
 		str1[c] = '\n';
 		c++;
-		i += 17+ strcspn(str3, k)+6;
+		i += 40+dl; 
 	}
 	return;
 }
@@ -104,7 +139,7 @@ void Reverse()
 
 HWND hs1;
 char text[] = {"Type the word..."};
-BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) //готово
+BOOL CALLBACK Dlgproc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam) 
 {
 	switch (uMsg)
 	{
