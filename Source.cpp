@@ -1,5 +1,4 @@
 #include <curl.7.30.0.2\build\native\include\curl\curl.h>
-#include <curl.7.30.0.2\build\native\lib\v110\x64\Release\dynamic\libcurl.lib>
 #include <windows.h>
 #include "resource.h"
 
@@ -18,14 +17,21 @@ void ProcessingWR()
 
 void ProcessingR()
 {
+	int c = 0;
+	int i = strcspn(str3, k)+6;
 	for (int j = 0; j < str3[strcspn(str3, dd)+1]-'0';j++)
 	{
-		int i = strcspn(str3, k); // как-то нужно удалить начало стр3 чтобы в цикле не получилось одно и то же значение
+		int dl = 0;
 		while (str3[i] != '\"')
 		{
-
+			str1[c] = str3[i];
+			c++;
 			i++;
+			dl++;
 		}
+		str1[c] = '\n';
+		c++;
+		i += 17+ strcspn(str3, k)+6;
 	}
 	return;
 }
